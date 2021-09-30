@@ -6,3 +6,24 @@
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.node {
+  fill: steelblue;
+  stroke: none;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1px;
+}
+
+.hidden {
+  fill: none;
+  stroke: none;
+}
+
+.label {
+  fill: whitesmoke;
+  font-size: 15px;
+}

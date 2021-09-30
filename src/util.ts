@@ -1,0 +1,86 @@
+const MAX_CHILDREN = 2;
+
+/**
+ *
+ * @param s - commas separated string
+ * @return level order traversal array
+ */
+export const decode = (s: string) => {
+  if (!s || !s.length) {
+    return [];
+  }
+  const isNull = (c: string) => c === "null";
+
+  const prunedArr = s
+    // remove all spaces
+    .split("")
+    .filter((c) => c !== " ")
+    .join("")
+
+    // remove all commas
+    .split(",")
+    .filter((c) => c !== ",");
+
+  return prunedArr.map((c) => {
+    if (isNull(c)) {
+      return null;
+    }
+
+    return c;
+  });
+};
+
+type NodeValue = string | number | null | undefined;
+
+class TreeNode {
+  name: NodeValue;
+  children: TreeNode[];
+
+  constructor(val: NodeValue) {
+    this.name = val;
+    this.children = [];
+  }
+}
+
+/**
+ *
+ * @param {Array} levelOrder
+ * @return {TreeNode} root
+ */
+export const buildTree = (levelOrder: NodeValue[]) => {
+  if (!levelOrder.length) {
+    return null;
+  }
+
+  const rootNodeVal = levelOrder.shift();
+  const rootNode = new TreeNode(rootNodeVal);
+
+  const queue = [rootNode];
+
+  while (levelOrder.length) {
+    if (queue.length === 0) {
+      throw new Error("Not a valid level order traversal input");
+    }
+    // number of nodes on the current level
+    const nodes = queue.length * 2;
+
+    let parentNode = queue.shift();
+    for (let i = 0; i < nodes; i++) {
+      const curNodeVal = levelOrder.shift();
+      const isNull = curNodeVal === undefined || curNodeVal === null;
+      const curNode = new TreeNode(isNull ? null : curNodeVal);
+
+      if (parentNode?.children.length === MAX_CHILDREN) {
+        parentNode = queue.shift();
+      }
+
+      if (!isNull) {
+        queue.push(curNode);
+      }
+
+      parentNode?.children.push(curNode);
+    }
+  }
+
+  return rootNode;
+};
