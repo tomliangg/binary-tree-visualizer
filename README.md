@@ -5,6 +5,8 @@ Built with [d3](https://d3js.org/)
 - Visualize a binary tree given a level-order-traversal string.
 - Handle invalid level-order-traversal.
 
+Try it out here: https://dyhrf.sse.codesandbox.io/
+
 ## Demo
 ![simple tree](demo/simple_tree.png)  
 ![left child only](demo/left_child_only.png)  
