@@ -7,7 +7,11 @@ document.querySelector("#updateBtn").addEventListener("click", e => {
   try {
     const inputString = document.querySelector("#inputString").value;
     const data = buildTree(decode(inputString));
-    const treeLayout = d3.tree().size([400, 200]);
+    
+    const w = document.querySelector("svg").clientWidth;
+    const h = document.querySelector("svg").clientHeight - 100;
+    const treeLayout = d3.tree().size([w, h]);
+    
     const root = d3.hierarchy(data);
     treeLayout(root);
 
