@@ -7,13 +7,22 @@
     <title>Vite App</title>
   </head>
   <body>
-    <svg width="500" height="300">
-      <g transform="translate(5, 30)">
-        <g class="links"></g>
-        <g class="nodes"></g>
-        <g class="labels"></g>
-      </g>
-    </svg>
+    <div id="app">
+      <form class="infoContainer">
+        <label for="levelOrder">Enter level order traversal:</label>
+        <input name="levelOrder" id="inputString" placeholder="1, 2, 3" />
+        <input type="submit" id="updateBtn" value="update tree" />
+        <p id="errorText"></p>
+      </form>
+      <svg width="500" height="300">
+        <g transform="translate(5, 30)">
+          <g class="links"></g>
+          <g class="nodes"></g>
+          <g class="labels"></g>
+        </g>
+      </svg>
+    </div>
+    
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
