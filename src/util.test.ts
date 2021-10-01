@@ -74,7 +74,7 @@ describe("buildTree function", () => {
       buildTree([1, null, null, 2]);
     } catch (e) {
       if (e instanceof Error) {
-        expect(e.message).toBe("Not a valid level order traversal input");
+        expect(e.message).toBe("Not a valid level order traversal");
       }
     }
   });

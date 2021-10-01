@@ -19,7 +19,7 @@ export const decode = (s: string) => {
 
     // remove all commas
     .split(",")
-    .filter((c) => c !== ",");
+    .filter((c) => c !== "," && c !== "");
 
   return prunedArr.map((c) => {
     if (isNull(c)) {
@@ -49,17 +49,20 @@ class TreeNode {
  */
 export const buildTree = (levelOrder: NodeValue[]) => {
   if (!levelOrder.length) {
-    return null;
+    throw new Error("Input is empty. Please enter the level order traversal");
   }
 
   const rootNodeVal = levelOrder.shift();
-  const rootNode = new TreeNode(rootNodeVal);
+  if (rootNodeVal === null) {
+    throw new Error("Not a valid level order traversal");
+  }
 
+  const rootNode = new TreeNode(rootNodeVal);
   const queue = [rootNode];
 
   while (levelOrder.length) {
     if (queue.length === 0) {
-      throw new Error("Not a valid level order traversal input");
+      throw new Error("Not a valid level order traversal");
     }
     // number of nodes on the current level
     const nodes = queue.length * 2;
