@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { buildTree, decode } from "./util";
+import { buildTree, decode, isLongText } from "./util";
 import "./style.css";
 
 document.querySelector("#updateBtn").addEventListener("click", e => {
@@ -72,14 +72,20 @@ document.querySelector("#updateBtn").addEventListener("click", e => {
       .data(root.descendants())
       .enter()
       .append("text")
-      .classed("label", true)
+      .classed("label", function(d) {
+        return !isLongText(d.data.name);
+      })
+      .classed("longLabel", function(d) {
+        return isLongText(d.data.name);
+      })
       .attr("text-anchor", "middle")
       .attr("transform", function (d) {
         return "translate(" + d.x + "," + d.y + ")";
       })
       .attr("dy", "5px")
       .text(function (d) {
-        return d.data.name;
+        const name = d.data.name;
+        return isLongText(name) ? name.slice(0, 3) + "..." : name;
       });
   } catch (e) {
     document.querySelector("#errorText").textContent = e.message;

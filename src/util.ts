@@ -87,3 +87,5 @@ export const buildTree = (levelOrder: NodeValue[]) => {
 
   return rootNode;
 };
+
+export const isLongText = (s?: string) => s && s.length > 4;

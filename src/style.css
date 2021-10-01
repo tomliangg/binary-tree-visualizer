@@ -23,7 +23,7 @@ html, body, #app {
 }
 
 .node {
-  fill: #BFDBFE;
+  fill: #15803D;
   stroke: none;
 }
 
@@ -38,8 +38,15 @@ html, body, #app {
   stroke: none;
 }
 
-.label {
-  fill: #EA580C;
-  font-size: 15px;
+.label, .longLabel {
+  fill: white;
   font-family: Consolas, monaco, monospace;
+}
+
+.label {
+  font-size: 15px;
+}
+
+.longLabel {
+  font-size: 11px;
 }
