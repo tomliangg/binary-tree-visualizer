@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/binary-tree-visualizer/assets/favicon.17e50649.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Tree Visualizer</title>
+    <script type="module" crossorigin src="/binary-tree-visualizer/assets/index.58bb0c89.js"></script>
+    <link rel="modulepreload" href="/binary-tree-visualizer/assets/vendor.b2ee980f.js">
+    <link rel="stylesheet" href="/binary-tree-visualizer/assets/index.0cac42f5.css">
+  </head>
+  <body>
+    <div id="app">
+      <form class="infoContainer">
+        <label for="levelOrder">Enter level order traversal:</label>
+        <input name="levelOrder" id="inputString" placeholder="1, 2, 3" />
+        <input type="submit" id="updateBtn" value="update tree" />
+        <p id="errorText"></p>
+      </form>
+      <svg width="100%" height="100%">
+        <g transform="translate(0, 40)">
+          <g class="links"></g>
+          <g class="nodes"></g>
+          <g class="labels"></g>
+        </g>
+      </svg>
+    </div>
+    
+    
+  </body>
+</html>
